@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    image: python:3.6
+    volumes:
+      - carp:/code
+    ports:
+      - "8002:8002"
+    depends_on:
+      - db
+  db:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./db/:/root/db"
+
+volumes:
+  db-data:
+  carp:
